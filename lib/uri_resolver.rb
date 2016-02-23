@@ -50,7 +50,7 @@ module UriResolver
   rescue StandardError => e # Something else happened??!!
     warn "URI #{uri} did not resolve, for unknown reason:"
     warn e.message
-    Status::DoesNotResolve
+    Status::MaybeResolves
   end
 
   private
