@@ -45,6 +45,8 @@ module UriResolver
     Status::Resolves
   rescue URI::InvalidURIError # Resolves, but to weird URL (contains escape sequences??)
     Status::Resolves
+  rescue HTTParty::RedirectionTooDeep # Resolves, but with lots of redirection!
+    Status::Resolves
   rescue StandardError => e # Something else happened??!!
     warn "URI #{uri} did not resolve, for unknown reason:"
     warn e.message
