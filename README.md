@@ -9,12 +9,12 @@ Scripting this is normally quite easy, too. Some things you might try are:
 * Ping the URI, and check for a response.
 * Try using `URI.parse` or `Net::HTTP.get`, and rescue if `Errno::ECONNREFUSED`?
 
-For "most" URIs a simple method like the above works fine.
+For *most* URIs a simple method like the above works fine.
 
 However, for many "obscure" websites, such as those registered in new GTLDs, you
 run into all sorts of trouble attempting this - especially when checking which
 URIs, out of a large list, resolve. For example, even a simple `ping` can *freeze*
-- which causes it to take ~20 seconds to check just one URI!!
+\- which causes it to take ~20 seconds to check just one URI!!
 
 This ruby gem attempts to optimise this check for URI resolution, by use of
 intelligent error handleing, and multithreaded (hence non-blocking) timeouts.
@@ -40,11 +40,11 @@ And then execute:
 
 ## Usage
 
-    UriResolver.resolve_status "google.com"      # => :resoves
-    UriResolver.resolve_status "sakjflkdjsfh.com" # => :does_not_resolve
+    UriResolver.resolve_status "google.com"        # => :resoves
+    UriResolver.resolve_status "sakjflkdjsfh.com"  # => :does_not_resolve
 
-    # If the connection times out, then the gem returns `:maybe_resolves`
-    UriResolver.resolve_status "getmintedpoker.tv"  # => :maybe_resolves
+    # If the connection times out, then the gem returns :maybe_resolves
+    UriResolver.resolve_status "getmintedpoker.tv" # => :maybe_resolves
     # Such URIs *probably* don't resolve, but a manual check may be a good idea
 
 Warning: This is *not perfect*; you can still get some false negatives. For example:
