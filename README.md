@@ -12,13 +12,22 @@ Scripting this is normally quite easy, too. Some things you might try are:
 For *most* URIs a simple method like the above works fine.
 
 However, for many "obscure" websites, such as those registered in new GTLDs, you
-run into all sorts of trouble attempting this - especially when checking which
-URIs, out of a large list, resolve. For example, even a simple `ping` can *freeze*
-\- which causes it to take ~20 seconds to check just one URI!!
+run into all sorts of trouble attempting this - especially when checking a very
+long list! For example:
 
-This ruby gem attempts to optimise this check for URI resolution, by use of
-intelligent error handleing, and multithreaded (hence non-blocking) timeouts.
-It's a pretty simplistic solution, but can save you a lot of headache.
+* Even a simple `ping` (i.e. opening a TCP connection) can *freeze* while
+connecting to the DNS server  - which causes it to take ~20 seconds to check
+just one URI!!
+* Some URIs resolve via many layers of redirections.
+* Some URIs resolve, but to "invalid" URIs which contain escape sequences.
+* The URI may resolve to a HTTPS connection with no/a misconfigured SSL certificate.
+* The URI may connect, but fails/times out when attempting to *read* any data.
+
+This ruby gem attempts to gracefully account for all of these edge cases (and more),
+by use of intelligent error handling. It also uses a multi threaded approach to prevent
+system-blocking timeouts.
+
+It's a pretty simplistic solution, but will hopefully be useful to others.
 
 ## Installation
 
