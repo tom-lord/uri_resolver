@@ -31,16 +31,14 @@ It's a pretty simplistic solution, but will hopefully be useful to others.
 
 ## Installation
 
-*NOT YET PUBLISHED TO RUBYGEMS*, as it's still "under development".
-
 Feel free to use this as you like, but I'm currently experimenting with it;
-implementation may change without warning, until further notice.
+implementation may change significantly, until `v1.0.0` is published.
 
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'uri_resolver', github: 'tom-lord/uri_resolver'
+gem 'uri_resolver'
 ```
 
 And then execute:
